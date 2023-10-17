@@ -1,0 +1,255 @@
+﻿﻿
+<!DOCTYPE html>
+<html lang="en" style="font-size: 10.0pt;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Resume Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    @{
+        Layout = null;
+    }
+
+    <link href="~/css/template-two.css" rel="stylesheet" />
+</head>
+<body class="templatebody mt-2">
+    <main class="bg-white templatecontainer container mt-2">
+
+        <!-- Personal Information Section -->
+        <section class="ms-3 me-3">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-4">
+                    <img src="~/img/img.png" class="w-100 h-100 mx-auto d-block" />
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <h1 style="color: #566c7a; font-size:46px; font-family: Calibri, serif;"<strong>@ViewBag.Introduction.IntroName</strong></h1>
+                    <p class="mb-1 fw-bold" style="color: #566c7a; font-family: Calibri, serif;">Dhaka, Bangladesh</p>
+                    <p class="mb-1 fw-bold" style="color: #566c7a; font-family: Calibri, serif;">@ViewBag.Introduction.IntroContact</p>
+                    <p class="mb-1 fw-bold" style="color: #566c7a; font-family: Calibri, serif;">@ViewBag.Introduction.IntroEmail</p>
+                  
+                       @foreach(var social in ViewBag.Introduction.SocialMediaList){
+                    
+                    <p class="mb-1">
+                            <a href="@social.LinkOrText" class="link" style="text-decoration:none;">
+                            <span class="fw-bold" style="font-size: 1.00rem; font-family: Calibri, serif; color: #566c7a;">@social.LinkOrText</span>
+                        </a>
+                    </p>
+                       }
+                   
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider Section -->
+        <section>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQoAAAALCAIAAAAIglSPAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAWUlEQVRoge3TsQmAMBRAQSOu7AwO4HQ2ghtIolYRHEB+nRR3E7zmpXlZz1wG4Gcq95Ovu3UG9GhsHQD9sgeE7AEhe0DIHhCyB4TsASF7QCht+1Hr2zoDevQBXocPwVLUf6YAAAAASUVORK5CYII=" class="ms-3 mt-2 mx-auto d-block" />
+            <svg viewbox="0.00000, 0.000000, 580.300000, 1.000000" style="width: 54.53rem;" class="ms-3 graphic mx-auto">
+                <path stroke-width="0.750000" fill="none" d="M 0 0 L 535.3 0.5" stroke="#566c7a" stroke-opacity="1.000000" />
+            </svg>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="ms-3 me-3">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 col-sm-3">
+                    <h5 class="fw-bold">Summary</h5>
+                </div>
+                <div class="col-md-9 col-lg-9 col-sm-9 mt-3">
+                    <p style="text-align: justify; text-justify: distribute; line-height: 1.4;">
+                        @ViewBag.ProfessionalSummary.ProfessionalSummary
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Divider Section -->
+        <section>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQoAAAALCAIAAAAIglSPAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAWUlEQVRoge3TsQmAMBRAQSOu7AwO4HQ2ghtIolYRHEB+nRR3E7zmpXlZz1wG4Gcq95Ovu3UG9GhsHQD9sgeE7AEhe0DIHhCyB4TsASF7QCht+1Hr2zoDevQBXocPwVLUf6YAAAAASUVORK5CYII=" class="ms-3  mx-auto d-block" />
+            <svg viewbox="0.00000, 0.000000, 580.300000, 1.000000" style="width: 54.53rem;" class="ms-3 graphic mx-auto">
+                <path stroke-width="0.750000" fill="none" d="M 0 0 L 535.3 0.5" stroke="#566c7a" stroke-opacity="1.000000" />
+            </svg>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="ms-3 me-3">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 col-sm-3">
+                    <h5 class="fw-bold">EXPERIENCE</h5>
+                </div>
+                <div style="line-height:0.8;" class="col-md-9 col-lg-9 col-sm-9 mt-3">
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="fw-bold">Jr. Programmer </p>
+                            </div>
+                            <div>
+                                <p class="fs-">06/2022 - Current</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="fw-bold">Swadesh Properties Ltd., <span class="gn-text">Dhaka, Bangladesh</span></p>
+                        </div>
+                        <div>
+                            <p class="fw-bold ms-3">
+                                <span style="font-size:20px">&#10146;</span>
+                                Enterprise Resource Planning (ERP)
+                            </p>
+                            <p style="text-align: justify; text-justify: distribute; line-height: 1.4;">
+                                I am currently responsible for maintaining databases and frontends, building logic for ERP software, and ensuring smooth application functioning. As an experienced Jr. Programmer, I excel in database management using SQL and front-end development, along with experience in ASP.NET MVC, and software development decision-making.
+                            </p>
+                        </div>
+                    </div>
+                    <hr style="border: 1px solid #566c7a;">
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="fw-bold">Internship Trainee</p>
+                            </div>
+                            <div>
+                                <p class="fs-">01/2022 - 04/2022</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="fw-bold">Programming Hero, <span class="gn-text">Dhaka, Bangladesh</span></p>
+                        </div>
+                        <div>
+                            <p class="fw-bold ms-3"><span style="font-size:20px">&#10146;</span>Jobs Search Website</p>
+                            <p style="text-align: justify; text-justify: distribute; line-height: 1.4;">
+                                As an intern trainee, I gained experience leading a team in the development and maintenance of web applications using MERN stack, under the guidance of my supervisor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider Section -->
+        <section>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQoAAAALCAIAAAAIglSPAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAWUlEQVRoge3TsQmAMBRAQSOu7AwO4HQ2ghtIolYRHEB+nRR3E7zmpXlZz1wG4Gcq95Ovu3UG9GhsHQD9sgeE7AEhe0DIHhCyB4TsASF7QCht+1Hr2zoDevQBXocPwVLUf6YAAAAASUVORK5CYII=" class="ms-3 mx-auto d-block" />
+            <svg viewbox="0.00000, 0.000000, 580.300000, 1.000000" style="width: 54.53rem;" class="ms-3 graphic mx-auto">
+                <path stroke-width="0.750000" fill="none" d="M 0 0 L 535.3 0.5" stroke="#566c7a" stroke-opacity="1.000000" />
+            </svg>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="ms-3 me-3">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 col-sm-3">
+                    <h5 class="fw-bold">SKILLS</h5>
+                </div>
+                <div class="col-md-9 col-lg-9 col-sm-9 mt-3">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <ul>
+                                <li>ASP.NET</li>
+                                <li>ASP.NET MVC</li>
+                                <li>ASP.NET Core</li>
+                                <li>Entity Framework</li>
+                                <li>Programming with </li>
+                                <li>C#</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <ul>
+                                <li>SQL</li>
+                                <li>Javascript</li>
+                                <li>JQuery</li>
+                                <li>React js</li>
+                                <li>Node.js</li>
+                                <li>Mongodb</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider Section -->
+        <section>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQoAAAALCAIAAAAIglSPAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAWUlEQVRoge3TsQmAMBRAQSOu7AwO4HQ2ghtIolYRHEB+nRR3E7zmpXlZz1wG4Gcq95Ovu3UG9GhsHQD9sgeE7AEhe0DIHhCyB4TsASF7QCht+1Hr2zoDevQBXocPwVLUf6YAAAAASUVORK5CYII=" class="ms-3  mx-auto d-block" />
+            <svg viewbox="0.00000, 0.000000, 580.300000, 1.000000" style="width: 54.53rem;" class="ms-3 graphic mx-auto">
+                <path stroke-width="0.750000" fill="none" d="M 0 0 L 535.3 0.5" stroke="#566c7a" stroke-opacity="1.000000" />
+            </svg>
+        </section>
+
+        <!-- Education Section -->
+        <section class="ms-3 me-3">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 col-sm-3">
+                    <h5 class="fw-bold">EDUCATION</h5>
+                </div>
+                <div style="line-height:0.8" class="col-md-9 col-lg-9 col-sm-9 mt-3">
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <div style="line-height:1.8">
+                                <p class="fw-bold ">Diploma in IT: Enterprise Systems Analysis & Design with C# </p>
+                            </div>
+                            <div class="mt-2">
+                                <p>2019-2021</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p>IsDB-BISEW, IDB Bhaban, Dhaka</p>
+                        </div>
+                    </div>
+                    <hr style="border: 1px dotted  #566c7a;">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="fw-bold">Master of Science: Clothing & Textile</p>
+                        </div>
+                        <div>
+                            <p class="fs-">2017-2018</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Home Economics College, DU</p>
+                        <p>CGPA: 3.42 out of 4.00</p>
+                    </div>
+                    <hr style="border: 1px dotted  #566c7a;">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="fw-bold">Bachelor of Science: Clothing & Textile</p>
+                        </div>
+                        <div>
+                            <p class="fs-">2013-2017</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Home Economics College, DU</p>
+                        <p>1st Class</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider Section -->
+        <section>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQoAAAALCAIAAAAIglSPAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAWUlEQVRoge3TsQmAMBRAQSOu7AwO4HQ2ghtIolYRHEB+nRR3E7zmpXlZz1wG4Gcq95Ovu3UG9GhsHQD9sgeE7AEhe0DIHhCyB4TsASF7QCht+1Hr2zoDevQBXocPwVLUf6YAAAAASUVORK5CYII=" class="ms-3  mx-auto d-block" />
+            <svg viewbox="0.00000, 0.000000, 580.300000, 1.000000" style="width: 54.53rem;" class="ms-3 graphic mx-auto">
+                <path stroke-width="0.750000" fill="none" d="M 0 0 L 535.3 0.5" stroke="#566c7a" stroke-opacity="1.000000" />
+            </svg>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="ms-3 me-3">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 col-sm-3">
+                    <h5 class="fw-bold">CERTIFICATIONS</h5>
+                </div>
+                <div class="col-md-9 col-lg-9 col-sm-9 mt-4">
+                    <div>
+                        <ul>
+                            <li>Vendor Certifications: Microsoft Certified Solution Developer (MCSD): Web Developer certificate from Microsoft Corporation</li>
+                            <li>Certification by IsDB-BISEW On Enterprise Systems Analysis Design with C#</li>
+                            <li>Professional Programming with C# by Devskill</li>
+                            <li>Full Stack Asp.net Core MVC Web Development by Devskill</li>
+                            <li>Complete Web Development Course By Jhankar Mahbub</li>
+                            <li>Certification in HTML5 & CSS3 by Pirple.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

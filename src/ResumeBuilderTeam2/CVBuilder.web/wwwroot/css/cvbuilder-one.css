@@ -1,0 +1,337 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-style: normal;
+}
+
+p {
+    line-height: 18px;
+}
+
+li {
+    line-height: 20px
+}
+
+.mkp_container ul li {
+    list-style-type: disc;
+    list-style-position: outside;
+}
+
+.workexperice {
+    top: 74px;
+}
+
+.mkp__workexperence {
+    position: relative;
+}
+
+.mkp__mt {
+    margin-top: 15px;
+}
+
+.mkp__font__bold {
+    font-weight: bold;
+    font-style: normal !important;
+}
+
+.mkp__href {
+    color: blue;
+}
+
+.mkp_mb {
+    margin-bottom: 20px;
+}
+
+.mkp__mx {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.mkp__heading_h4 {
+    border-bottom: 2px solid #5c71b1;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.mkp__my {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mkp_container {
+    width: 86vw;
+    margin: auto;
+    margin-top: 120px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #fff;
+}
+
+.mkp__header {
+    display: grid;
+    grid-template-columns: 80% auto;
+    gap: 20px;
+    padding: 0px 20px;
+}
+
+.mkp__main {
+    padding: 20px;
+}
+
+/*.mkp__tool {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}*/
+
+.mkp__repeact__grid__container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+}
+
+.mkp__header__image img {
+    width: 200px;
+    height: 200px;
+    /*border: 1px solid green;*/
+}
+
+.mkp__education__container {
+    display: grid;
+    grid-template-columns: 77% 17%;
+    grid-gap: 0px 14px;
+}
+
+    .mkp__education__container p {
+        line-height: 25px;
+    }
+
+.mkp__industiral__container {
+    grid-template-columns: 29% 66%;
+    display: grid;
+    margin-bottom: 20px;
+    grid-gap: 0px 14px;
+}
+
+.mkp__references__container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 20px;
+}
+
+.mkp__repeact__content {
+    position: relative;
+}
+
+p.yorking-year {
+    text-align: right;
+}
+
+#saveData {
+    display:none;
+    background-color: forestgreen;
+    color: white;
+    transition: .5s;
+}
+
+button {
+    border: none;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-weight: normal;
+    font-family: Arial;
+    font-size: 18px;
+}
+
+    button#cvEditable:hover, #saveData:hover {
+        background: #5c71b1;
+        /*color: #000;*/
+    }
+
+    button#cvEditable {
+        background: orange;
+        color: white;
+        transition: .5s;
+    }
+
+ul.skill-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px 15px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* edit button add button remove  */
+.mkp__card {
+    display: none;
+    position: absolute;
+    top: 0;
+    padding: 10px 20px;
+}
+
+    .mkp__card button {
+        padding: 5px 10px;
+        border: 1px solid #222;
+        background-color: blueviolet;
+        color: #fff;
+    }
+
+
+.ref-address {
+    display: grid;
+    grid-template-columns: 35% 64%;
+    grid-column-gap: 15px;
+    margin-bottom: 5px;
+}
+
+.mkp__header__information address p {
+    display: grid;
+    grid-template-columns: 26% 72%;
+    gap: 10px 18px;
+}
+
+@media screen and (max-width: 992px) {
+    .mkp_container {
+        width: 100vw;
+        padding: 0px;
+    }
+
+    .mkp__references__container {
+        display: block;
+    }
+
+    .ref-address {
+        display: grid;
+        grid-template-columns: 20% 80%;
+    }
+    /*   .mkp__references__container :nth-child(2n+1) {
+            border-top: 1px solid blue;
+        }*/
+    .second-ref {
+        margin-top: 30px;
+        border-top: 2px solid #5c71b1;
+    }
+
+    button#cvEditable {
+        right: 10px;
+    }
+}
+
+.saveandpdf {
+    position: absolute;
+    right: 20%;
+    bottom: 76px;
+}
+
+button#pdfdownload {
+    color: white;
+    background: red;
+    padding: 5px 15px;
+    transition: .3s;
+}
+
+    button#pdfdownload:hover {
+        color: red;
+        background-color: #3a0ab2;
+    }
+
+
+div#display_image_div {
+    width: 350px;
+    height: 203px;
+    border: 1px solid;
+}
+
+p.social-parent {
+    position: relative;
+}
+
+.social-media-add-remove {
+    position: absolute;
+    right: -34px;
+    top: 0;
+    display: none;
+}
+
+.social-media-add {
+    position: absolute;
+    right: 48px;
+    content: '+';
+    color: green;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.social-media-remove {
+    position: absolute;
+    right: 34px;
+    content: '-';
+    color: red;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.mkp__industiral__container,
+.mkp__education__container, .mkp__referrance {
+    position: relative !important;
+}
+
+p.social-media-add-remove.workexperice {
+    top: 18px;
+}
+
+section {
+    padding: 0px 0;
+    overflow: hidden;
+}

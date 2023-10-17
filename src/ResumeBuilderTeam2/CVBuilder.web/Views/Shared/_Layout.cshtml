@@ -1,0 +1,170 @@
+﻿@using Crud.Persistance.Features.Membership;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <title>@ViewData["Title"] - CVBuilder.Web</title>
+
+    <link href="~/css/log_reg_landingpage.css" rel="stylesheet" />
+    <!---Boatstrap-5--->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!---Theme Support File--->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Theme/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Theme/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    
+
+    <!-- Template Main CSS File -->
+    <link href="~/Theme/assets/css/style.css" rel="stylesheet">
+
+    <!---Theme Support File End--->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    
+    <!-----javascript captcha----->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    @await RenderSectionAsync("Styles", required: false)
+   
+</head>
+
+<body>
+    <partial name="_NotificationPartial" />
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+            <a asp-action="index" class="logo d-flex align-items-center mt-4 pt-1">
+                <img src="~/Theme/assets/img/logo.png" alt="">
+                <span>CV Builder</span>
+            </a>
+            <nav id="navbar" class="navbar" >
+                <ul>
+                    <li><a class="nav-link scrollto active" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    @* <li><a class="nav-link scrollto" href="#teamplate">Chose Teamplate</a></li> *@
+                    <li><a class="nav-link scrollto" href="#features">Features</a></li>
+                    <li><a class="nav-link scrollto" href="#testimonials">Test Monials</a></li>
+                    <li><a asp-area="Users" asp-controller="User" asp-action="Profile">User Profile</a></li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li><a class="nav-link scrollto" asp-area="" asp-controller="Account" asp-action="Login">Hello @User.Identity?.Name!</a></li>
+                        <li><a class="getstarted scrollto bg-secondary" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a></li>    
+                    }else{
+                        <li><a class="getstarted scrollto bg-secondary" asp-area="" asp-controller="Account" asp-action="Login">LogIn</a></li>
+                        <li><a class="getstarted scrollto" asp-area="" asp-controller="Account" asp-action="Register">Sign Up</a></li>
+                    }      
+                    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <main>
+        <!-- Your main content goes here -->       
+        @RenderBody()
+
+
+    </main>
+    <!-- ======= Footer ======= -->
+    <footer style="position:static;" id="footer" class="footer">     
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-5 col-md-12 footer-info">
+                        <a asp-action="index" class="logo d-flex align-items-center">
+                            <img src="~/Theme/assets/img/logo.png" alt="">
+                            <span>CV Builder</span>
+                        </a>
+
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a asp-action="index">Home</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a asp-action="privacy">About us</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a asp-controller="Account" asp-action="Register">Register</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a  asp-controller="Account" asp-action="Login">Login</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a asp-action ="privacy">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#">Create CV</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#">Download CV</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#">Shear CV</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#">Update CV</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#">Job Search</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                        <h4>Contact Us</h4>
+                        <p>
+                            128/A Shamim Tower <br>
+                            Gazipur, 1346<br>
+                            United StatesBangladesh <br><br>
+                            <strong>Phone:</strong> +88 01746 902499<br>
+                            <strong>Email:</strong> cvbuilder@team2.com<br>
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+   <footer class="footer text-muted">
+        <div class="container">
+            &copy; 2023 - <span class="text-bold">CV Builder, Team2</span> - <span>All Rights Reserved</span>
+        </div>     
+    </footer>  
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+    <!---Theme Support File--->
+    <!-- Vendor JS Files -->
+    <script src="~/Theme/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/Theme/assets/vendor/aos/aos.js"></script>
+    <script src="~/Theme/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Theme/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Theme/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Theme/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Theme/assets/vendor/php-email-form/validate.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0-alpha1/js/bootstrap.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="~/Theme/assets/js/main.js"></script>
+    <!---Theme Support File end--->
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

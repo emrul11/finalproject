@@ -1,0 +1,37 @@
+﻿@using CVBuilder.Web.Utilities
+
+<style>
+    /* Add CSS styles for inline toaster */
+    .inline-toaster {
+        position: fixed;
+        top: 60px;
+        bottom:10px;
+        right: 11px; 
+        width:300px;
+        
+    }
+      
+
+</style>
+
+@if (TempData.Peek<ResponseModel>("ResponseMessage") != null)
+{
+    var response = TempData.Get<ResponseModel>("ResponseMessage");
+    <div aria-live="polite" aria-atomic="true" class="position-relative mb-5">
+        <!-- Use 'ms-md-5' for margin-left on medium and larger screens -->
+        <!-- Toast container within the content container -->
+        <div class="toast-container top-0 end-0 inline-toaster">
+            <!-- Add the inline-toaster class here -->
+            <!-- Toast messages will be displayed here -->
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
+                <div class="toast-header">
+                    <button type="button" class="btn btn-close btn-secondary btn-sm ml-auto" data-bs-dismiss="toast">Close</button>
+                </div>
+                <div class="toast-body mt-1" style="background-color:#4154f1; color:white;">
+                    @response.Message
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,57 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<main class="mt-5" id="main">
+    <!-- notification -->  
+    <section id="about" class="about">
+        <div class="loginbody">
+            <div class="container">
+                <div class="login-box py-5 my-5">
+                    <div class="row">
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 pt-5">
+                            <div class="logo">
+                                <span class="logo-font">Login</span>
+                            </div>
+                            </hr>
+                            <form class="login-form" method="post" asp-area="" asp-controller="account" asp-antiforgery="true" asp-action="Login" asp-route-ReturnUrl="@Model.ReturnUrl">
+                                <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+                                <div class="form-group">
+                                    <input asp-for="Email" class="form-control" placeholder="Email or UserName">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="Password" class="form-control" placeholder="Password">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                    <a asp-action="ForgotPassword" asp-controller="account" class="forgot-password">Forgot Password?</a>
+                                </div>
+                                <div class="checkbox mb-3">
+                                    <label asp-for="RememberMe" class="form-label">
+                                        <input class="form-check-input" asp-for="RememberMe" />
+                                        @Html.DisplayNameFor(m => m.RememberMe)
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-block">LOGIN</button>
+                                </div>
+                                <div class="form-group">
+                                    <div class="text-center">New Member? <a asp-area="" asp-controller="Account" asp-action="Register">Sign up Now</a></div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6 hide-on-mobile pt-5">
+                            <img class="img-fluid" src="~/img/login-img.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End About Section -->
+
+
+</main>

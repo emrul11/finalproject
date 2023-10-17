@@ -1,0 +1,469 @@
+﻿
+
+@section Styles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.0/cropper.css" />
+    <link href="~/css/cvbuilder-one.css" rel="stylesheet" />
+    <style>
+        .mkp_container{               
+        margin: auto;
+        margin-top: 146px;
+        margin-bottom: 146px;
+        padding-left: 0;
+        padding-right: 0;
+        width:86vw;
+        background:#fff !important
+
+        }
+  
+    </style>
+}
+<div class="container">
+    <p>@ViewBag.userId</p>
+ </div>
+    <div class="mkp_container" id="main-container">
+        <div class="col-sm-12 d-flex justify-content-end">
+         @* <button class="m-2" id="cvEditable">Edit CV</button> *@
+        </div>
+       
+        <header class="mkp__header">
+            <div class="mkp__header__information">
+
+                <address id="addressuser">
+                    <h3 class="mkp__font__bold editable cvName">@ViewBag.Introduction.IntroName</h3>
+                    <p>
+                        <strong class="mkp__font__bold  editable">Email:</strong>
+                        <a class="mkp__href email editable" href="mailto:@ViewBag.Introduction.IntroEmail">@ViewBag.Introduction.IntroEmail</a>
+                    </p>
+                    <p> <strong class="mkp__font__bold editable">Contact: </strong><a class="mkp__href editable mobile"
+                            href="tel:+@ViewBag.Introduction.IntroContact">@ViewBag.Introduction.IntroContact</a></p>
+                 
+                          @*   <p> <strong class="mkp__font__bold editable socialName">Skype: </strong> <span
+                            class="editable sociallink">@ViewBag.Introduction.SocialMediaList[0].LinkOrText[0]</span></p> *@
+
+
+                            @foreach(var social in ViewBag.Introduction.SocialMediaList){
+                    <p class="social-parent">
+                        
+                        <strong class="mkp__font__bold editable socialName">@social.SocialMediaName </strong>
+
+                        <a class="mkp__href editable sociallink"
+                            href="@social.LinkOrText">@social.LinkOrText</a>
+                           
+                            <label class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </label>        
+                            
+                    </p>
+                    }
+                    <h5 class="editable address">
+                        Residential Address: House 11, Road 11, Mirpur, Dhaka, Bangladesh
+                    </h5>
+                </address>
+            </div>
+            <div class="mkp__header__image">
+                <img id="image-upload" src="~/img/img.png" alt="Not found Image" />
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        @* <input id="image-change" type="file" accept="image/jpeg, image/png, image/jpg"> *@
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6" align="center">
+                                    <label onclick="start_cropping()">Browse image</label>
+                                    <div id="display_image_div">
+                                        <img name="display_image_data" id="display_image_data" src=""
+                                            alt="Upload Picture"> 
+                                    </div>
+                                    <input type="hidden" name="cropped_image_data" id="cropped_image_data">
+                                    <br>
+                                    <input type="file" name="browse_image" id="browse_image" class="form-control">
+                                </div>
+                                <div class="col-lg-6" align="center">
+                                    <label>Preview</label>
+                                    <div id="cropped_image_result">
+                                        <img  style="width: 350px;" src=""  alt="Corp button clik"/>
+                                    </div>
+                                    <br>
+                                    <button type="button" class="btn btn-success" id="crop_button">Crop</button>
+                                    <button type="button" class="btn btn-danger" id="download_button">Download</button>
+                                    <button type="button" class="btn btn-warning" id="upload_button">Upload</button>
+                                </div>
+                            </div>
+                            <!--  end row -->
+                        </div>
+                  </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mkp__main">
+            <section class="mkp__professional">
+                <h4 class="mkp__font__bold mkp__heading_h4 editable professional-heading">@ViewBag.ProfessionalSummary.Title</h4>
+                <p class="editable professionaltext">
+                    @ViewBag.ProfessionalSummary.ProfessionalSummary
+                </p>
+            </section>
+
+            <section class="mkp__tools mkp__my">
+                <h4 class="mkp__font__bold mkp_mb editable skills">
+                    Language, Framework, Tools and Other Skills
+                </h4>
+
+                <div class="mkp__tool">
+                    <div class="mkp__tool__left">
+                        <ul class="editable skill-list">
+                            @foreach( var skill in ViewBag.Skills){
+                            <li>@skill.Description</li>
+                         @*    <li>Asp.net, .Net MVC</li>
+                            <li>C#, VB.Net</li>
+                            <li>LINQ, SQL, Entity Framework and MongoDB</li>
+                            <li>Angular 6, Angular 1 and MEAN Stack</li>
+                            <li>Javascript, JQuery and Aj</li>
+                            <li>Bootstrap CSS, HTML</li>
+                            <li>Crystal and RDLC Report</li>
+                            <li>
+                                Design Pattern & Principles, OOP Software Design &
+                                Architecture
+                            </li>
+                            <li>TFS, GIT, V. SourceSafe, Trello, Agile, SCRUM</li>
+                            <li>Visual Studio 2017, SQL Server 2016, Visual Studio code</li> *@
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mkp__workexperence mkp__my" id="workexperence">
+                <h4 class="mkp__font__bold mkp__heading_h4 editable">Working Experience</h4>
+            @foreach(var exp in @ViewBag.WorkExperiences)
+            {
+                
+          
+            <p class="social-media-add-remove workexperice">
+                                @* <span class="social-media-add">+</span> *@
+                                <span class="social-media-remove">-</span>
+                            </p>
+                <div class="mkp__repeact__content">
+                    <p class="mkp__font__bold editable position">@exp.JobTitle</p>
+                               <p class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </p>
+                    <div class="mkp__repeact__grid__container">
+                        <p class="editable companyName">@exp.Company</p>
+                        <p class="yorking-year editable">@exp.StartDate</p>
+                    </div>
+
+                    <ul class="editable workingTools">
+                        <li>
+                            Develop enterprise software solutions by studying information
+                            needs, conferring with users, studying system flow and work
+                            processes, investigating problem areas, following the software
+                            development life cycle.
+                        </li>
+                        <li>
+                            Determine operational feasibility by evaluating analysis,
+                            problem definition, requirements, solution development and
+                            proposed solutions.
+                        </li>
+                        <li>
+                            Document and demonstrate solutions by developing documentation,
+                            flowcharts, layouts, diagrams etc.
+                        </li>
+                    </ul>
+                </div>
+                }
+
+              @*   <div class="mkp__repeact__content">
+                    <p class="mkp__font__bold mkp__mt editable position">Senior Software Engineer (.Net)</p>
+                           <p class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </p>
+                    <div class="mkp__repeact__grid__container">
+                        <p class="editable companyName">
+                            Hello Solutions Ltd. – BDBL Bhaban (6th Floor), Kawran Bazar,
+                            Dhaka 1215
+                        </p>
+                        <p class="yorking-year editable">08/2018 to present</p>
+                    </div>
+
+                    <ul class="editable workingTools">
+                        <li>
+                            Develop enterprise software solutions by studying information
+                            needs, conferring with users, studying system flow and work
+                            processes, investigating problem areas, following the software
+                            development life cycle.
+                        </li>
+                        <li>
+                            Determine operational feasibility by evaluating analysis,
+                            problem definition, requirements, solution development and
+                            proposed solutions.
+                        </li>
+                        <li>
+                            Document and demonstrate solutions by developing documentation,
+                            flowcharts, layouts, diagrams etc.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mkp__repeact__content">
+                    <p class="mkp__font__bold mkp__mt editable position">Senior Officer (Application)</p>
+                           <p class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </p>
+                    <div class="mkp__repeact__grid__container">
+                        <p class="editable companyName">
+                            RAD (Bangladesh) Ltd. – Savar Old EPZ, Ganakbari, Dhaka 1349
+                        </p>
+                        <p class="yorking-year editable">10/2015 to 07/2017</p>
+                    </div>
+
+                    <ul class="editable workingTools">
+                        <li>
+                            Develop enterprise software solutions by studying information
+                            needs, conferring with users, studying system flow and work
+                            processes, investigating problem areas, following the software
+                            development life cycle.
+                        </li>
+                        <li>
+                            Determine operational feasibility by evaluating analysis,
+                            problem definition, requirements, solution development and
+                            proposed solutions.
+                        </li>
+                        <li>
+                            Document and demonstrate solutions by developing documentation,
+                            flowcharts, layouts, diagrams etc.
+                        </li>
+                    </ul>
+                </div> *@
+            </section>
+
+            <section class="mkp__industrial__personal__project">
+                <h4 class="mkp__font__bold mkp__heading_h4 editable project">
+                    Industrial / Personal Application Projects
+                </h4>
+
+                <div class="mkp__industiral__container">
+                    <p class="editable projectPersonal">Company Name / Personal</p>
+                    <p class="editable projecDscription">Application Project description</p>
+
+                </div>
+                <div class="mkp__industiral__container">
+                    <p class="editable projectCompany">ABC Ltd.</p>
+                    <p class="editable projectCompanyDescription">
+                        ERP (ISP Billing, Cloud Billing, Accounting, Inventory etc.) This
+                        ERP project basically concentrating on ISP business consists of
+                        customer management, customer care management, product management,
+                        financial management, logistics & inventory management, order
+                        management & ISP billing collection, Cisco Cloud billing,
+                        accounting, sales CRM etc.
+                    </p>
+                    <p class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </p>
+                </div>
+                <div class="mkp__industiral__container">
+                    <p class="editable projectCompany">Personal</p>
+                    <p class="editable projectCompanyDescription">
+                        Hotel Management System Language/Tools: Asp.net, C#, SQL Server
+                        2008, Crystal Report 9, JavaScript.<br />
+
+                        Online Restaurant Management System Language/Tools: PHP – My
+                        SQL<br />
+
+                        Shopping Application with Admin Panel (Ongoing) Language/Tools:
+                        MEAN Stack and MERN stack
+                    </p>
+                    <p class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </p>
+                </div>
+            </section>
+
+            <section class="mkp__professional__traning">
+                <h4 class="mkp__font__bold mkp__heading_h4 editable">Professional Training</h4>
+                <ul class="editable professionTraining">
+                    <li>
+                        Workshop on Software Design and Architecture at Nerd Castle,
+                        BASIS, Dhaka from Feb 03 to Mar 03, 2017
+                    </li>
+                    <li>
+                        Training on AIO ERP system and its implementation at CPC, Hop Lun,
+                        China on Jan 11 to Jan 21, 2016
+                    </li>
+                    <li>
+                        Training on Object Oriented Programming on .Net at BASIS, Dhaka
+                        from Nov 2009 to Feb 2010
+                    </li>
+                    <li>
+                        Industrial Training on J2EE at DPS pvt. Ltd, Kolkata, India from
+                        June 2007 to July 2007
+                    </li>
+                    <li>
+                        Red Hat Certified Technician (RHCT) at Micropo pvt. ltd, Kolkata,
+                        India from June 2006 to July 2006
+                    </li>
+                </ul>
+            </section>
+
+            <section class="mkp__eduction">
+                <h4 class="mkp__font__bold mkp__heading_h4 editable">Education</h4>
+                <div class="mkp__education__container">
+                    <p class="editable subject">
+                        Master of Science in Computer Science (90%) Asian University,
+                        Dhaka, Bangladesh
+                    </p class="editable">
+                    <p class="text-right passing-year editable">2005</p>
+                    <p class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </p>
+                </div>
+                <div class="mkp__education__container">
+                    <p class="editable subject">
+                        B.Sc. in Computer Science & Engineering (87%) American
+                        International University - Bangladesh
+                    </p>
+                    <p class="text-right editable passing-year">2000</p>
+                    <p class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </p>
+                </div>
+                <div class="mkp__education__container">
+                    <p class="editable subject">
+                        Higher Secondary (H.S.C) in Science Group (2nd Division) Rangpur
+                        Govt. College, Rangpur
+                    </p>
+                    <p class="text-right editable passing-year">1996</p>
+                    <p class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </p>
+                </div>
+
+                <div class="mkp__education__container">
+                    <p class="editable subject">
+                        Secondary School (S.S.C) in Science Group (1st Division) Rangpur
+                        Modern Boys High School, Chittagong
+                    </p>
+                    <p class="text-right editable passing-year">1990</p>
+                    <p class="social-media-add-remove">
+                                <span class="social-media-add">+</span>
+                                <span class="social-media-remove">-</span>
+                            </p>
+                </div>
+            </section>
+
+            <section class="mkp__referrance">
+                <h4 class="mkp__font__bold mkp__heading_h4 editable">References</h4>
+                <p class="social-media-add-remove workexperice">
+                                <span class="social-media-remove">-</span>
+                 </p>
+                <div class="mkp__references__container">
+
+                    <address>
+                        <div class="ref-address">
+                            <strong class="mkp__font__bold editable reffenceDesig">Name:</strong>
+                            <span class="editable reffenceName">Abdullah Maruf </span>
+                        </div>
+
+                        <div class="ref-address"><strong class="mkp__font__bold editable reffenceDesig"> Designation:
+                            </strong> <span class="editable reffenceName">Chief Architect
+                            </span></div>
+                        <div class="ref-address"><strong class="mkp__font__bold editable reffenceDesig"> Company:
+                            </strong> <span class="editable reffenceName">ABCD Private Ltd.
+                            </span></div>
+                        <div class="ref-address"> <strong
+                                class="mkp__font__bold editable reffenceDesig">Address</strong> <span
+                                class="editable reffenceName"> >House 1, Road 02,
+                                Block C, Section D, Mirpur 1, Dhaka </span>
+                        </div>
+                        <div class="ref-address"> <strong class="mkp__font__bold editable reffenceDesig">Email:</strong>
+                            <span class="editable reffenceName"> maruf@abcdltd.com
+                            </span>
+                        </div>
+                        <div class="ref-address"> <strong
+                                class="mkp__font__bold editable reffenceDesig">Contact:</strong> <span
+                                class="editable reffenceName">+8801722222222 </span>
+                        </div>
+                    </address>
+
+                    <address class="second-ref">
+                        <div class="ref-address">
+                            <strong class="mkp__font__bold editable reffenceDesig">Name:</strong>
+                            <span class="editable reffenceName">Abdullah Maruf </span>
+                        </div>
+
+                        <div class="ref-address"><strong class="mkp__font__bold editable reffenceDesig"> Designation:
+                            </strong> <span class="editable reffenceName">Chief Architect
+                            </span></div>
+                        <div class="ref-address"><strong class="mkp__font__bold editable reffenceDesig"> Company:
+                            </strong> <span class="editable reffenceName">ABCD Private Ltd.
+                            </span></div>
+                        <div class="ref-address"> <strong
+                                class="mkp__font__bold editable reffenceDesig">Address</strong> <span
+                                class="editable reffenceName"> >House 1, Road 02,
+                                Block C, Section D, Mirpur 1, Dhaka </span>
+                        </div>
+                        <div class="ref-address"> <strong class="mkp__font__bold editable reffenceDesig">Email:</strong>
+                            <span class="editable reffenceName"> maruf@abcdltd.com
+                            </span>
+                        </div>
+                        <div class="ref-address"> <strong
+                                class="mkp__font__bold editable reffenceDesig">Contact:</strong> <span
+                                class="editable reffenceName">+8801722222222 </span>
+                        </div>
+                    </address>
+                </div>
+            </section>
+            <!-- Edit delete move button -->
+
+        </main>
+        <footer class="mkp__footer">
+
+        <div class="mkp__card edit">
+            <button id="edit-section">Edit</button>
+            <!-- <button id = "addSection">Add</button>
+        <button id = "removeSection">Remove</button> -->
+        </div>
+
+        <div class="m-2 p-2">
+            <button id="saveData">Save CV </button>
+            <button id="pdfdownload"> PDF</button>
+            @* <button id="wordDownload"> Word File </button> *@
+
+        </div>
+
+    </footer>
+   </div>
+        
+
+    @section scripts{
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.es.js"
+        integrity="sha512-VTufZOUx+Gc0N4JkluA0ZkVs2x4wfDI3p60gRWpHT761kMQ+hiNlYI+8MGXbLO48ymPKAeRa1wsEm3BIaxSEvw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.js"
+        integrity="sha512-Bw9Zj8x4giJb3OmlMiMaGbNrFr0ERD2f9jL3en5FmcTXLhkI+fKyXVeyGyxKMIl1RfgcCBDprJJt4JvlglEb3A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/polyfills.es.js"
+        integrity="sha512-ccZBwXP6zByd5l4Iz6y7Vu2iqGo6t2hwGEuLauWKmTb7AtwhwmqnCr7yvbZBIZxUtH3a1BDaNJz8/MrnpZl8wA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/polyfills.umd.js"
+        integrity="sha512-gmqJDkLpXOuVrRDAQa8pWc+WReEL4hO0f07hcCjx9bayyt5YENnZP2MgeSgo5CaUb3feZu/JCEKf69EsFZcQhA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.0/cropper.js"></script>
+
+    <script src="~/js/cv-template.js"></script>
+
+    <script src="~/js/cv-builder.js"></script>
+    }

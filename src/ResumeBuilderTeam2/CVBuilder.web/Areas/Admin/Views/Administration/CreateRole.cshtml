@@ -1,0 +1,41 @@
+﻿@model RoleCreateModel
+@{
+    ViewData["Title"] = "CreateRole";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-4">
+            <!-- general form elements -->
+            <div class="card card-primary p-2">
+                <div class="card-header">
+                    <h3 class="card-title">Create Role</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" asp-antiforgery="true" asp-action="CreateRole"
+                      asp-area="Admin" asp-controller="Administration" method="post">
+                    <div class="card-body">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="RoleName"></label>
+                            <input type="text" class="form-control" asp-for="RoleName" placeholder="Enter title">
+                            <span asp-validation-for="RoleName" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <!--/.col (left) -->
+    </div>
+    <!-- /.row -->
+</div><!-- /.container-fluid -->
